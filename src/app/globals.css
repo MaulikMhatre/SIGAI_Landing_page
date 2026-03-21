@@ -1,0 +1,140 @@
+@import "tailwindcss";
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
+html, body {
+  background-color: #000000;
+  overscroll-behavior: none;
+}
+
+.primary-font{
+  font-family: var(--font-orbitron);
+}
+.sec-font{
+  font-family: var(--font-rajdhani);
+}
+
+.grad-bg{
+  background: linear-gradient(135deg, #000000 ,#011A28 , #004369, #011A28, #000);
+}
+.team-box {
+  height: 35vh;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  cursor: pointer;
+  margin-bottom: 5rem;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease-in-out;
+}
+.team-box:hover {
+  transform: scale(1.05);
+}
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 3px white; 
+}
+.text-outline2 {
+  color: white;
+  -webkit-text-stroke: 1px #93d7ff; 
+}
+.core-name {
+  font-size: 5rem;
+  transition: transform 0.6s ease, -webkit-text-stroke 0.6s ease;
+}
+.core-name:hover {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  transform: scale(2.2);
+}
+
+
+
+
+.perspective-container{
+ -webkit-perspective: 800px;
+  perspective: 800px;
+  -webkit-transform-style: preserve-3d;
+  max-width: 700px;
+}
+.model1{
+  webkit-transform: rotateY(45deg);
+  transform: rotateY(45deg);
+  width: 100%;
+}
+.model2{
+  webkit-transform: rotateY(-45deg);
+  transform: rotateY(-45deg);
+  width: 100%;
+}
+
+
+
+
+.will-change-transform { will-change: transform; }
+@keyframes gridmove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 60px 60px;
+  }
+}
+
+
+.neon-text {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    #67c6fe 0%,
+    #ffffff 50%,
+    #67c6fe 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 4s linear infinite;
+}
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.text-metallic {
+  background: linear-gradient(
+    90deg,
+    #d9d9d9 0%,
+    #ffffff 20%,
+    #bfbfbf 40%,
+    #f0f0f0 60%,
+    #d9d9d9 80%,
+    #ffffff 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0px 1px 2px rgba(255, 255, 255, 0.6),
+               0px 2px 6px rgba(0, 0, 0, 0.3);
+  background-size: 200% auto;
+  animation: metallic-shine 3s linear infinite;
+}
+
+@keyframes metallic-shine {
+  0% { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+
+
+

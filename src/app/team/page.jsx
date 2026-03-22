@@ -101,10 +101,15 @@ const Team = () => {
               backgroundPosition:'center',
               backgroundColor:'rgba(0,0,0,0.2)',
               width:'100%',
-              aspectRatio:'16 / 9',
+             
               display:'flex',
               alignItems:'center',
-              justifyContent:'center'
+              justifyContent:'center',
+              border: '8px solid #A89ACD',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.7)',
+              aspectRatio: '21 / 9',
+             
+            
             }}
           >
             <h2 className='core-name'>{card.name}</h2>

@@ -5,9 +5,6 @@ import { faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from "next/image";
 
-/**
- * AI Background Component
- */
 const AIBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     {/* Neural network nodes */}
@@ -65,9 +62,6 @@ const AIBackground = () => (
   </div>
 );
 
-/**
- * Reusable 3D Member Card
- */
 const MemberCard = ({ person, delay = 0 }) => {
   const cardRef = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -148,7 +142,6 @@ const Core2023_24 = () => {
     { name: "Komal Patil", role: "Faculty Coordinator", img: "/team/2023-24/komal-patil.jpg", instagram: "#", linkedin: "#" },
     { name: "Nilesh Rathod", role: "Faculty Coordinator", img: "/team/2023-24/nilesh-rathod.jpg", instagram: "#", linkedin: "#" },
   ];
-
   const core = [
     { name: "Krish", role: "Chairperson", img: "/team/2023-24/Krish.png", instagram: "#", linkedin: "#" },
     { name: "Mahir", role: "Co-Chairperson", img: "/team/2023-24/mahir.jpg", instagram: "#", linkedin: "#" },
@@ -167,11 +160,9 @@ const Core2023_24 = () => {
     { name: "Lazeen", role: "VCP Events", img: "/team/2023-24/Lazeen.jpg", instagram: "#", linkedin: "#" },
     { name: "Vedant", role: "VCP Creatives", img: "/team/2023-24/Vedant.jpg", instagram: "#", linkedin: "#" },
   ];
-
   return (
     <div className="grad-bg min-h-screen text-white relative overflow-x-hidden">
       {showContent && <AIBackground />}
-
       <AnimatePresence>
         {!showContent && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }} className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#050a10]">
@@ -183,7 +174,6 @@ const Core2023_24 = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
       {showContent && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="relative z-10 flex flex-col items-center pt-24 pb-20 px-4">
           <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl text-center primary-font font-extrabold mb-12 uppercase tracking-wide">
@@ -192,15 +182,12 @@ const Core2023_24 = () => {
           <div className="flex flex-wrap justify-center gap-10 mb-28">
             {faculty.map((p, i) => <MemberCard key={`fac-${i}`} person={p} delay={i * 0.2} />)}
           </div>
-
           <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl text-center primary-font font-extrabold mb-12 uppercase tracking-wide">
             Core <span className="text-[#64c3fa]">Committee</span>
           </motion.h2>
-
           <div className="flex flex-wrap justify-center gap-10 md:gap-16 mb-16">
             {core.slice(0, 2).map((p, i) => <MemberCard key={`top-${i}`} person={p} delay={i * 0.15} />)}
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-12">
             {core.slice(2).map((p, i) => <MemberCard key={`core-${i}`} person={p} delay={(i % 4) * 0.1} />)}
           </div>

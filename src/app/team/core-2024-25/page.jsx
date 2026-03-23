@@ -5,9 +5,6 @@ import { faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from "next/image";
 
-/**
- * AI Background Component
- */
 const AIBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
     {/* Neural network nodes */}
@@ -49,14 +46,12 @@ const AIBackground = () => (
         {item.text}
       </span>
     ))}
-
     {/* Binary strips */}
     <div className="absolute left-[1%] top-[20%] flex flex-col gap-1 opacity-25">
       {["11011", "00100", "10110", "01001", "11101"].map((b, i) => (
         <span key={i} className="font-mono text-[9px] text-[#64c3fa] tracking-widest">{b}</span>
       ))}
     </div>
-
     {/* Corner brackets */}
     <svg className="absolute top-4 left-4 w-10 h-10 opacity-40"><path d="M10 0 L0 0 L0 10" fill="none" stroke="#64c3fa" strokeWidth="1.5" /></svg>
     <svg className="absolute top-4 right-4 w-10 h-10 opacity-40"><path d="M0 0 L10 0 L10 10" fill="none" stroke="#64c3fa" strokeWidth="1.5" /></svg>
@@ -65,9 +60,6 @@ const AIBackground = () => (
   </div>
 );
 
-/**
- * Reusable 3D Member Card
- */
 const MemberCard = ({ person, delay = 0 }) => {
   const cardRef = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });

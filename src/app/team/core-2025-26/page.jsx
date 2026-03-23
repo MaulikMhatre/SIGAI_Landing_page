@@ -5,12 +5,8 @@ import { faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from "next/image";
 
-/**
- * AI Background Component
- */
 const AIBackground = () => (
   <div className="absolute inset-0 overflow-hidden pointer-events-none">
-    {/* Neural network nodes */}
     {[
       { cx: "5%", cy: "10%", r: 4 }, { cx: "15%", cy: "35%", r: 3 },
       { cx: "8%", cy: "60%", r: 5 }, { cx: "20%", cy: "85%", r: 3 },
@@ -65,9 +61,6 @@ const AIBackground = () => (
   </div>
 );
 
-/**
- * Reusable 3D Member Card (Updated for Mobile Visibility)
- */
 const MemberCard = ({ person, delay = 0 }) => {
   const cardRef = useRef(null);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -89,11 +82,11 @@ const MemberCard = ({ person, delay = 0 }) => {
   return (
     <motion.div
       ref={cardRef}
-      onMouseMove={(e) => handleInteraction(e.clientX, e.clientY)}
-      onMouseEnter={() => setIsActive(true)}
+      onMouseMove={(e)=>handleInteraction(e.clientX, e.clientY)}
+      onMouseEnter={()=>setIsActive(true)}
       onMouseLeave={stopInteraction}
-      onTouchStart={() => setIsActive(true)}
-      onTouchMove={(e) => handleInteraction(e.touches[0].clientX, e.touches[0].clientY)}
+      onTouchStart={()=>setIsActive(true)}
+      onTouchMove={(e)=>handleInteraction(e.touches[0].clientX, e.touches[0].clientY)}
       onTouchEnd={stopInteraction}
       initial={{ opacity: 0, scale: 0.9, y: 20 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
@@ -124,8 +117,6 @@ const MemberCard = ({ person, delay = 0 }) => {
         <div className="text-center w-full mt-3">
           <h3 className="text-white font-bold text-lg leading-tight truncate px-2">{person.name}</h3>
           <p className="text-[#64c3fa] text-[10px] font-bold uppercase tracking-widest mt-1 opacity-80">{person.role}</p>
-          
-          {/* Mobile-only social links bar (Visible on small screens) */}
           <div className="flex md:hidden items-center justify-center gap-6 mt-3 pt-2 border-t border-white/5">
             <a href={person.instagram} target="_blank" rel="noopener noreferrer" className="text-gray-400 active:text-[#ff4f84] text-xl"><FontAwesomeIcon icon={faInstagram} /></a>
             <a href={person.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray-400 active:text-[#4fa1ff] text-xl"><FontAwesomeIcon icon={faLinkedin} /></a>
@@ -139,7 +130,6 @@ const MemberCard = ({ person, delay = 0 }) => {
 
 const Core2025_26 = () => {
   const [showContent, setShowContent] = useState(false);
-
   useEffect(() => {
     const timer = setTimeout(() => setShowContent(true), 1500);
     return () => clearTimeout(timer);
@@ -176,7 +166,6 @@ const Core2025_26 = () => {
   return (
     <div className="grad-bg min-h-screen text-white relative overflow-x-hidden">
       {showContent && <AIBackground />}
-
       <AnimatePresence>
         {!showContent && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }} className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#050a10]">
@@ -188,7 +177,6 @@ const Core2025_26 = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
       {showContent && (
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }} className="relative z-10 flex flex-col items-center pt-24 pb-20 px-4">
           <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl text-center primary-font font-extrabold mb-12 uppercase tracking-wide">
@@ -197,15 +185,12 @@ const Core2025_26 = () => {
           <div className="flex flex-wrap justify-center gap-10 mb-28">
             {faculty.map((p, i) => <MemberCard key={`fac-${i}`} person={p} delay={i * 0.2} />)}
           </div>
-
           <motion.h2 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-4xl text-center primary-font font-extrabold mb-12 uppercase tracking-wide">
             Core <span className="text-[#64c3fa]">Committee</span>
           </motion.h2>
-
           <div className="flex flex-wrap justify-center gap-10 md:gap-16 mb-16">
             {core.slice(0, 2).map((p, i) => <MemberCard key={`top-${i}`} person={p} delay={i * 0.15} />)}
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 md:gap-12">
             {core.slice(2).map((p, i) => <MemberCard key={`core-${i}`} person={p} delay={(i % 4) * 0.1} />)}
           </div>

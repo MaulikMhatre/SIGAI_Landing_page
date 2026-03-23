@@ -2,17 +2,12 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-/**
- * TeamGradientCard Component
- * A 3D tilting card that reveals a rainbow-style glow and floating text on hover.
- */
+
 export const TeamGradientCard = ({ name, img, onClick, className }) => {
   const cardRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
   const [isMounted, setIsMounted] = useState(false);
-
-  // Fix for hydration: ensure 3D transforms only apply on the client
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -20,24 +15,20 @@ export const TeamGradientCard = ({ name, img, onClick, className }) => {
   const handleMouseMove = (e) => {
     if (cardRef.current) {
       const rect = cardRef.current.getBoundingClientRect();
-      
       // Calculate mouse position relative to center of the card
       const x = (e.clientX || e.touches?.[0]?.clientX) - rect.left - rect.width / 2;
       const y = (e.clientY || e.touches?.[0]?.clientY) - rect.top - rect.height / 2;
-      
-      // Calculate rotation (Max 10 degrees)
+      // Calculate rotation
       const rotateX = -(y / rect.height) * 10;
       const rotateY = (x / rect.width) * 10;
 
       setRotation({ x: rotateX, y: rotateY });
     }
   };
-
   const handleMouseLeave = () => {
     setIsHovered(false);
     setRotation({ x: 0, y: 0 });
   };
-
   return (
     <motion.div
       ref={cardRef}
@@ -59,7 +50,6 @@ export const TeamGradientCard = ({ name, img, onClick, className }) => {
       onTouchMove={handleMouseMove}
       onTouchEnd={handleMouseLeave}
     >
-      {/* Background Image Layer */}
       <div 
         className="absolute inset-0 z-0 transition-transform duration-700 ease-out"
         style={{
@@ -69,10 +59,8 @@ export const TeamGradientCard = ({ name, img, onClick, className }) => {
           transform: isHovered ? 'scale(1.1)' : 'scale(1)',
         }}
       >
-        {/* Dark overlay that lightens on hover */}
         <div className={`absolute inset-0 bg-black/50 transition-colors duration-500 ${isHovered ? 'bg-black/20' : 'bg-black/50'}`} />
       </div>
-
       {/* Noise Texture Layer */}
       <div 
         className="absolute inset-0 opacity-[0.15] mix-blend-overlay z-10 pointer-events-none"
@@ -80,7 +68,6 @@ export const TeamGradientCard = ({ name, img, onClick, className }) => {
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
         }}
       />
-
       {/* Dynamic Glow (Moves with mouse) */}
       <motion.div
         className="absolute inset-0 z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -93,10 +80,8 @@ export const TeamGradientCard = ({ name, img, onClick, className }) => {
           y: -rotation.x * 10,
         }}
       />
-
       {/* Interactive Border Light */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px] z-30 bg-gradient-to-r from-transparent via-sky-400/50 to-transparent" />
-
       {/* Text Content with "Floating" Effect */}
       <div className="relative flex items-center justify-center h-full z-40 p-6 pointer-events-none">
         <motion.h2 

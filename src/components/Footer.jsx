@@ -96,13 +96,6 @@
 
 
 
-
-
-
-
-
-
-
 import React from "react";
 import { FaXTwitter } from "react-icons/fa6";
 import { InstagramIcon, LinkedinIcon, PhoneIcon, MailIcon } from "lucide-react";
@@ -115,8 +108,7 @@ const Footer = () => {
 
       {/* Main Grid Content */}
       <div className="max-w-7xl mx-auto p-8 md:p-14 z-20 relative w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 pb-12">
-          
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 pb-12">         
           {/* Address */}
           <div className="flex flex-col">
             <h2 className="text-xl font-semibold text-[#67c6fe] mb-6">Address</h2>
@@ -133,7 +125,6 @@ const Footer = () => {
               ></iframe>
             </div>
           </div>
-
           {/* Contact */}
           <div className="flex flex-col">
             <h2 className="text-xl font-semibold text-[#67c6fe] mb-6">Contact</h2>
@@ -149,7 +140,6 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
           {/* Links */}
           <div className="flex flex-col">
             <h2 className="text-xl font-semibold text-[#67c6fe] mb-6">Quick Links</h2>
@@ -160,7 +150,6 @@ const Footer = () => {
               <li><a href="/contact" className="hover:text-[#3ca2fa] transition-colors">Contact</a></li>
             </ul>
           </div>
-
           {/* Socials */}
           <div className="flex flex-col items-center md:items-start">
             <h2 className="text-xl font-semibold text-[#67c6fe] mb-6">Follow Us</h2>
@@ -179,15 +168,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* BIG TEXT SECTION - FIXED FOR MOBILE */}
       <div className="relative w-full flex flex-col items-center justify-center pb-12 z-30 px-4">
-        {/* Removed 'hidden lg:block'. Using responsive height instead. */}
         <div className="w-full h-24 sm:h-32 md:h-64">
           <TextHoverEffect text="DJSCE SIGAI" className="w-full h-full" />
-        </div>
-        
-        {/* Copyright - Using responsive padding instead of negative margins */}
+        </div>       
         <div className="text-center text-gray-500 text-[10px] sm:text-xs md:text-sm pt-4 border-t border-white/5 w-full max-w-7xl mx-auto">
           © {new Date().getFullYear()} DJSCE SIGAI. All rights reserved.
         </div>

@@ -5,14 +5,11 @@ const teamCards = [
   { id: "2024-25", href: "/team/core-2024-25", img: "/team/team2.jpg", name: "CORE 2024-25" },
   { id: "2023-24", href: "/team/core-2023-24", img: "/team/team1.jpg", name: "CORE 2023-24" },
 ]
-
 const Team = () => {
   const router = useRouter()
-
   const handleCardClick = (card) => {
     router.push(card.href)
   }
-
   const AIBackground = () => (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Neural network nodes */}
